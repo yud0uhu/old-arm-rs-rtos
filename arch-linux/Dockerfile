@@ -10,8 +10,6 @@ RUN pacman -Syu --noconfirm \
     qemu-arch-extra \
     openocd
 
-USER root
-
 ENV RUST_HOME /usr/local/lib/rust
 ENV RUSTUP_HOME ${RUST_HOME}/rustup
 ENV CARGO_HOME ${RUST_HOME}/cargo
@@ -31,7 +29,7 @@ RUN rustup component add rust-src \
 
 WORKDIR /work/cortex-m-rs
 
-USER user
+ENTRYPOINT ["/bin/sh","-c"]
 
 # The Cargo project template
 
